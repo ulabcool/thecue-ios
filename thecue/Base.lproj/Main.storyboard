@@ -101,6 +101,9 @@
                                         <state key="normal" title="Join the queue">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="buttonAction:" destination="L4C-PD-s93" eventType="touchUpInside" id="XcG-tS-ded"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -135,6 +138,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Join the cue" id="rGp-tZ-Xr6"/>
                     <connections>
+                        <outlet property="button" destination="8Ea-I4-A2b" id="uXN-Op-Vbc"/>
                         <outlet property="segmentedControl" destination="8sx-My-2mv" id="OjI-mw-IhY"/>
                         <outlet property="tableView" destination="dGI-yA-VS3" id="0Dt-xP-3sG"/>
                     </connections>

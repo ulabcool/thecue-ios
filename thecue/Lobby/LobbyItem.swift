@@ -11,12 +11,15 @@ import Foundation
 struct LobbyItem {
     var name: String
     var userId: String
-
+    var createdAt: Date
     init?(withDictionnary dictionnary: [String: AnyObject]) {
         guard let name = dictionnary["name"] as? String,
-            let userId = dictionnary["userId"] as? String else {
+            let userId = dictionnary["userId"] as? String,
+            let createdAt = dictionnary["createdAt"] as? TimeInterval else {
                 return nil
         }
+        
+        self.createdAt = Date(timeIntervalSince1970: createdAt/1000)
         self.name = name
         self.userId = userId
     }

@@ -15,7 +15,9 @@ class LobbyViewController: UIViewController {
     var refCurrentQueue: DatabaseReference?
     var tables: [Table] = []
     var items: [LobbyItem] = []
+    let redColor = UIColor(red: 244/255, green: 96/255, blue: 110/255, alpha: 1.0)
     
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +50,20 @@ class LobbyViewController: UIViewController {
                 return
             }
             
-            let newItems = allValues.flatMap{
+            var newItems = allValues.flatMap{
                 LobbyItem(withDictionnary: $0)
             }
+            
+            newItems.sort { $0.createdAt < $1.createdAt }
             self.items = newItems
             self.tableView.reloadData()
         })
+    }
+    @IBAction func buttonAction(_ sender: Any) {
+        let item = ["userId": Auth.auth().currentUser!.providerData[0].uid,
+                    "name": Auth.auth().currentUser!.displayName,
+                    "createdAt": ServerValue.timestamp()] as [String : Any]
+        refCurrentQueue?.child(Auth.auth().currentUser!.providerData[0].uid).setValue(item)
     }
 }
 
