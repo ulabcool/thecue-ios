@@ -64,9 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print(tables)
             let resTables = tables.flatMap{Table(withDictionnary: $0)}
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let lobbyViewController = storyboard.instantiateViewController(withIdentifier: "lobbyViewControllerIdentifier") as! LobbyViewController
+            let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationControllerIdentifier") as! UINavigationController
+            let lobbyViewController = navigationController.topViewController as! LobbyViewController
             lobbyViewController.tables = resTables
-            self.window?.rootViewController = lobbyViewController
+            self.window?.rootViewController = navigationController
         })
     }
 
