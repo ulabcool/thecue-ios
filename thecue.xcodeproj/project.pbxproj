@@ -12,9 +12,12 @@
 		437040A91F0650AB004FA467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437040A71F0650AB004FA467 /* Main.storyboard */; };
 		437040AB1F0650AB004FA467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 437040AA1F0650AB004FA467 /* Assets.xcassets */; };
 		437040AE1F0650AB004FA467 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437040AC1F0650AB004FA467 /* LaunchScreen.storyboard */; };
+		ED7A4CB590D7D89D763C08FA /* Pods_thecue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2394DCC070E0BE281050C8BD /* Pods-thecue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thecue.release.xcconfig"; path = "Pods/Target Support Files/Pods-thecue/Pods-thecue.release.xcconfig"; sourceTree = "<group>"; };
+		2B56F47E4474FD8ACF04F82B /* Pods-thecue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thecue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-thecue/Pods-thecue.debug.xcconfig"; sourceTree = "<group>"; };
 		437040A01F0650AB004FA467 /* thecue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thecue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		437040A31F0650AB004FA467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		437040A51F0650AB004FA467 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		437040AA1F0650AB004FA467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		437040AD1F0650AB004FA467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		437040AF1F0650AB004FA467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thecue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED7A4CB590D7D89D763C08FA /* Pods_thecue.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				437040A21F0650AB004FA467 /* thecue */,
 				437040A11F0650AB004FA467 /* Products */,
+				78DE6DB4E78415DA64096AC8 /* Pods */,
+				EC289CB9FFC3C84A04CCE6C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = thecue;
 			sourceTree = "<group>";
 		};
+		78DE6DB4E78415DA64096AC8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B56F47E4474FD8ACF04F82B /* Pods-thecue.debug.xcconfig */,
+				2394DCC070E0BE281050C8BD /* Pods-thecue.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC289CB9FFC3C84A04CCE6C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 437040B21F0650AB004FA467 /* Build configuration list for PBXNativeTarget "thecue" */;
 			buildPhases = (
+				87C779028314D7371A62C873 /* [CP] Check Pods Manifest.lock */,
 				4370409C1F0650AB004FA467 /* Sources */,
 				4370409D1F0650AB004FA467 /* Frameworks */,
 				4370409E1F0650AB004FA467 /* Resources */,
+				B7CC7C9E3EF77B2A7EDE1EC0 /* [CP] Embed Pods Frameworks */,
+				1E056D2AB383C6B7F5C4F110 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E056D2AB383C6B7F5C4F110 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-thecue/Pods-thecue-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87C779028314D7371A62C873 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B7CC7C9E3EF77B2A7EDE1EC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-thecue/Pods-thecue-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4370409C1F0650AB004FA467 /* Sources */ = {
@@ -261,6 +336,7 @@
 		};
 		437040B31F0650AB004FA467 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B56F47E4474FD8ACF04F82B /* Pods-thecue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 24ZZS38JW5;
@@ -274,6 +350,7 @@
 		};
 		437040B41F0650AB004FA467 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2394DCC070E0BE281050C8BD /* Pods-thecue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 24ZZS38JW5;
