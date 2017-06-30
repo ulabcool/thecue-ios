@@ -16,9 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+
+         ESTConfig.setupAppID("giacomo-usabilla-com-s-pro-n2o", andAppToken: "02bffe8d3c2870ada4211ac2d9c4bb9d")
+
         return true
     }
 
