@@ -66,7 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationControllerIdentifier") as! UINavigationController
             let lobbyViewController = navigationController.topViewController as! LobbyViewController
-            lobbyViewController.tables = resTables
+            let lobbyViewModel = LobbyViewModel(tables: resTables)
+            lobbyViewController.viewModel = lobbyViewModel
             self.window?.rootViewController = navigationController
         })
     }
