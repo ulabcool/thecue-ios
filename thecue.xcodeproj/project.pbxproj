@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		437040A41F0650AB004FA467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040A31F0650AB004FA467 /* AppDelegate.swift */; };
-		437040A61F0650AB004FA467 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040A51F0650AB004FA467 /* ViewController.swift */; };
 		437040A91F0650AB004FA467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437040A71F0650AB004FA467 /* Main.storyboard */; };
 		437040AB1F0650AB004FA467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 437040AA1F0650AB004FA467 /* Assets.xcassets */; };
 		437040AE1F0650AB004FA467 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437040AC1F0650AB004FA467 /* LaunchScreen.storyboard */; };
+		437040B61F06578B004FA467 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437040B51F06578B004FA467 /* GoogleService-Info.plist */; };
+		437040BB1F065D2C004FA467 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040BA1F065D2C004FA467 /* SigninViewController.swift */; };
+		437040BE1F065D61004FA467 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040BD1F065D61004FA467 /* LobbyViewController.swift */; };
 		ED7A4CB590D7D89D763C08FA /* Pods_thecue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +22,13 @@
 		2B56F47E4474FD8ACF04F82B /* Pods-thecue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thecue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-thecue/Pods-thecue.debug.xcconfig"; sourceTree = "<group>"; };
 		437040A01F0650AB004FA467 /* thecue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thecue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		437040A31F0650AB004FA467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		437040A51F0650AB004FA467 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		437040A81F0650AB004FA467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		437040AA1F0650AB004FA467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		437040AD1F0650AB004FA467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		437040AF1F0650AB004FA467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		437040B51F06578B004FA467 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		437040BA1F065D2C004FA467 /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		437040BD1F065D61004FA467 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thecue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -62,13 +66,31 @@
 			isa = PBXGroup;
 			children = (
 				437040A31F0650AB004FA467 /* AppDelegate.swift */,
-				437040A51F0650AB004FA467 /* ViewController.swift */,
 				437040A71F0650AB004FA467 /* Main.storyboard */,
 				437040AA1F0650AB004FA467 /* Assets.xcassets */,
 				437040AC1F0650AB004FA467 /* LaunchScreen.storyboard */,
 				437040AF1F0650AB004FA467 /* Info.plist */,
+				437040B51F06578B004FA467 /* GoogleService-Info.plist */,
+				437040BC1F065D49004FA467 /* Lobby */,
+				437040B91F065D2C004FA467 /* Signin */,
 			);
 			path = thecue;
+			sourceTree = "<group>";
+		};
+		437040B91F065D2C004FA467 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				437040BA1F065D2C004FA467 /* SigninViewController.swift */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		437040BC1F065D49004FA467 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				437040BD1F065D61004FA467 /* LobbyViewController.swift */,
+			);
+			path = Lobby;
 			sourceTree = "<group>";
 		};
 		78DE6DB4E78415DA64096AC8 /* Pods */ = {
@@ -152,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				437040AE1F0650AB004FA467 /* LaunchScreen.storyboard in Resources */,
+				437040B61F06578B004FA467 /* GoogleService-Info.plist in Resources */,
 				437040AB1F0650AB004FA467 /* Assets.xcassets in Resources */,
 				437040A91F0650AB004FA467 /* Main.storyboard in Resources */,
 			);
@@ -212,7 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				437040A61F0650AB004FA467 /* ViewController.swift in Sources */,
+				437040BE1F065D61004FA467 /* LobbyViewController.swift in Sources */,
+				437040BB1F065D2C004FA467 /* SigninViewController.swift in Sources */,
 				437040A41F0650AB004FA467 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +405,7 @@
 				437040B41F0650AB004FA467 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
