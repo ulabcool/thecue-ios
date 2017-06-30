@@ -8,4 +8,6 @@ target 'thecue' do
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod ‘EstimoteSDK’
+
 end
