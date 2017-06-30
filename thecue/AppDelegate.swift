@@ -42,14 +42,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print("Error login in Firebase\(error)")
                 return
             }
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let lobbyViewController = storyboard.instantiateViewController(withIdentifier: "lobbyViewControllerIdentifier") as! LobbyViewController
-            self.window?.rootViewController = lobbyViewController
+            self.loadTablesAndLobby()
         }
     }
 
+
+
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // DISCONNECT
+    }
+
+    func loadTablesAndLobby() {
+        let refTables = Database.database().reference().child("tables");
+
+        refTables.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            guard let tables = snapshot.value as? [[String: AnyObject]] else {return}
+            print(tables)
+            let resTables = tables.flatMap{Table(withDictionnary: $0)}
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let lobbyViewController = storyboard.instantiateViewController(withIdentifier: "lobbyViewControllerIdentifier") as! LobbyViewController
+            lobbyViewController.tables = resTables
+            self.window?.rootViewController = lobbyViewController
+        })
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

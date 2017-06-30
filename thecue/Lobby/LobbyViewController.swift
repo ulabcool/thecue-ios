@@ -7,29 +7,30 @@
 //
 
 import UIKit
+import Firebase
 
 class LobbyViewController: UIViewController {
 
+    var refCurrentQueue: DatabaseReference?
+    var tables: [Table] = []
+    var items: [LobbyItem] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        listenForQueue(withKey: tables.first?.queue ?? "rokin")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func listenForQueue(withKey key: String) {
+        refCurrentQueue = Database.database().reference(withPath: "queues/\(key)");
+        refCurrentQueue?.observe(DataEventType.value, with: { (snapshot) in
+            guard let queue = snapshot.value as? [[String: AnyObject]] else {
+                return
+            }
+            let newItems = queue.flatMap{
+                LobbyItem(withDictionnary: $0)
+            }
+            print(newItems)
+            self.items = newItems
+        })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

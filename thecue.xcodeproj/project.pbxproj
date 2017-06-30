@@ -14,6 +14,8 @@
 		437040B61F06578B004FA467 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437040B51F06578B004FA467 /* GoogleService-Info.plist */; };
 		437040BB1F065D2C004FA467 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040BA1F065D2C004FA467 /* SigninViewController.swift */; };
 		437040BE1F065D61004FA467 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040BD1F065D61004FA467 /* LobbyViewController.swift */; };
+		437040C01F0668E3004FA467 /* LobbyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040BF1F0668E3004FA467 /* LobbyItem.swift */; };
+		437040C21F066C9D004FA467 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040C11F066C9D004FA467 /* Table.swift */; };
 		ED7A4CB590D7D89D763C08FA /* Pods_thecue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		437040B51F06578B004FA467 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		437040BA1F065D2C004FA467 /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		437040BD1F065D61004FA467 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		437040BF1F0668E3004FA467 /* LobbyItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyItem.swift; sourceTree = "<group>"; };
+		437040C11F066C9D004FA467 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thecue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				437040BD1F065D61004FA467 /* LobbyViewController.swift */,
+				437040BF1F0668E3004FA467 /* LobbyItem.swift */,
+				437040C11F066C9D004FA467 /* Table.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -236,6 +242,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				437040BE1F065D61004FA467 /* LobbyViewController.swift in Sources */,
+				437040C21F066C9D004FA467 /* Table.swift in Sources */,
+				437040C01F0668E3004FA467 /* LobbyItem.swift in Sources */,
 				437040BB1F065D2C004FA467 /* SigninViewController.swift in Sources */,
 				437040A41F0650AB004FA467 /* AppDelegate.swift in Sources */,
 			);
