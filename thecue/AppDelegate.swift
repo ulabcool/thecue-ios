@@ -6,12 +6,13 @@
 //  Copyright © 2017 Usabilla. All rights reserved.
 //
 
+//swiftlint:disable line_length
 import UIKit
 import Firebase
 import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -19,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
 
          ESTConfig.setupAppID("giacomo-usabilla-com-s-pro-n2o", andAppToken: "02bffe8d3c2870ada4211ac2d9c4bb9d")
 
@@ -30,46 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: [:])
-    }
-
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print("Error login in Google\(error)")
-            return
-        }
-
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print("Error login in Firebase\(error)")
-                return
-            }
-            self.loadTablesAndLobby()
-        }
-    }
-
-
-
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // DISCONNECT
-    }
-
-    func loadTablesAndLobby() {
-        let refTables = Database.database().reference().child("tables");
-
-        refTables.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-            guard let tables = snapshot.value as? [[String: AnyObject]] else {return}
-            print(tables)
-            let resTables = tables.flatMap{Table(withDictionnary: $0)}
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationControllerIdentifier") as! UINavigationController
-            let lobbyViewController = navigationController.topViewController as! LobbyViewController
-            let lobbyViewModel = LobbyViewModel(tables: resTables)
-            lobbyViewController.viewModel = lobbyViewModel
-            self.window?.rootViewController = navigationController
-        })
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -93,7 +53,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

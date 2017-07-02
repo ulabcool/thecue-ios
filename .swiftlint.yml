@@ -1,0 +1,5 @@
+disabled_rules:
+  - nesting
+excluded:
+  - Pods
+  - thecue/Beacon

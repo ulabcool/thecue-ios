@@ -11,7 +11,7 @@ import Foundation
 struct Table {
     var name: String
     var queue: String
-    
+
     init?(withDictionnary dictionnary: [String: AnyObject]) {
         guard let name = dictionnary["name"] as? String,
             let queue = dictionnary["queue"] as? String else {
@@ -20,5 +20,5 @@ struct Table {
         self.name = name
         self.queue = queue
     }
-    
+
 }

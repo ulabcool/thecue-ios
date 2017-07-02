@@ -18,8 +18,8 @@ struct LobbyItem {
             let createdAt = dictionnary["createdAt"] as? TimeInterval else {
                 return nil
         }
-        
-        self.createdAt = Date(timeIntervalSince1970: createdAt/1000)
+
+        self.createdAt = Date(timeIntervalSince1970: createdAt / 1000)
         self.name = name
         self.userId = userId
     }
