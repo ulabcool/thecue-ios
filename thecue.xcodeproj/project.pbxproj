@@ -30,6 +30,7 @@
 		437040C61F068B6A004FA467 /* LobbyItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040C51F068B6A004FA467 /* LobbyItemTableViewCell.swift */; };
 		437679F91F06C55700E36686 /* LobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437679F81F06C55700E36686 /* LobbyViewModel.swift */; };
 		437679FC1F06C6A000E36686 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437679FB1F06C6A000E36686 /* Theme.swift */; };
+		C5DCB4771F2B7A4D00B4B628 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCB4761F2B7A4D00B4B628 /* UsersListViewController.swift */; };
 		ED7A4CB590D7D89D763C08FA /* Pods_thecue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		437040C51F068B6A004FA467 /* LobbyItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyItemTableViewCell.swift; sourceTree = "<group>"; };
 		437679F81F06C55700E36686 /* LobbyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewModel.swift; sourceTree = "<group>"; };
 		437679FB1F06C6A000E36686 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		C5DCB4761F2B7A4D00B4B628 /* UsersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
 		F7D174F4B03E9904AE86DB1E /* Pods_thecue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thecue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				437040BC1F065D49004FA467 /* Lobby */,
 				437040B91F065D2C004FA467 /* Signin */,
 				049619061F06581000518ABC /* thecue-Bridging-Header.h */,
+				C5DCB4761F2B7A4D00B4B628 /* UsersListViewController.swift */,
 			);
 			path = thecue;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				046CC0B51F067E7B00FC561D /* BeaconContentFactory.swift in Sources */,
 				046CC0BA1F067E7B00FC561D /* CachingContentFactory.swift in Sources */,
 				431718A81F2B585B00BF612E /* Player.swift in Sources */,
+				C5DCB4771F2B7A4D00B4B628 /* UsersListViewController.swift in Sources */,
 				046CC0BE1F0682CF00FC561D /* BeaconManager.swift in Sources */,
 				046CC0B71F067E7B00FC561D /* BeaconDetailsCloudFactory.swift in Sources */,
 			);

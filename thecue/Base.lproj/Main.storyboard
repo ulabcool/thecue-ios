@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,7 +76,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pTc-Tf-EBz" id="eDr-82-xTs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19J-j5-l39">
@@ -167,11 +167,49 @@
                         <outlet property="button" destination="8Ea-I4-A2b" id="uXN-Op-Vbc"/>
                         <outlet property="segmentedControl" destination="8sx-My-2mv" id="OjI-mw-IhY"/>
                         <outlet property="tableView" destination="dGI-yA-VS3" id="0Dt-xP-3sG"/>
+                        <segue destination="b4o-CD-15v" kind="presentation" identifier="showListViewController" id="j4G-MV-tcA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4W7-dR-D4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1770.4000000000001" y="36.431784107946029"/>
+        </scene>
+        <!--Users List View Controller-->
+        <scene sceneID="eQp-sC-eBG">
+            <objects>
+                <viewController id="b4o-CD-15v" customClass="UsersListViewController" customModule="thecue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3ju-hX-fej"/>
+                        <viewControllerLayoutGuide type="bottom" id="koP-ca-wQB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2dI-WO-wpn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GlU-lM-a5M">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="b4o-CD-15v" id="vNv-yB-dLQ"/>
+                                    <outlet property="delegate" destination="b4o-CD-15v" id="eLW-Ex-ru8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GlU-lM-a5M" secondAttribute="trailing" id="5W4-fc-YFN"/>
+                            <constraint firstItem="koP-ca-wQB" firstAttribute="top" secondItem="GlU-lM-a5M" secondAttribute="bottom" id="iGY-Po-N3v"/>
+                            <constraint firstItem="GlU-lM-a5M" firstAttribute="leading" secondItem="2dI-WO-wpn" secondAttribute="leading" id="rKQ-ov-htt"/>
+                            <constraint firstItem="GlU-lM-a5M" firstAttribute="top" secondItem="2dI-WO-wpn" secondAttribute="top" id="sEG-yi-KiT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="GlU-lM-a5M" id="lKa-Mz-zis"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FGX-Dp-pnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2610" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CEU-Hz-sGx">
