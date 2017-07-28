@@ -19,6 +19,7 @@
 		046CC0BC1F067E7B00FC561D /* ProximityContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC0B41F067E7B00FC561D /* ProximityContentManager.swift */; };
 		046CC0BE1F0682CF00FC561D /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC0BD1F0682CF00FC561D /* BeaconManager.swift */; };
 		431718A81F2B585B00BF612E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431718A71F2B585B00BF612E /* Player.swift */; };
+		431718AA1F2B7DCC00BF612E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431718A91F2B7DCC00BF612E /* UIImageView.swift */; };
 		437040A41F0650AB004FA467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040A31F0650AB004FA467 /* AppDelegate.swift */; };
 		437040A91F0650AB004FA467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437040A71F0650AB004FA467 /* Main.storyboard */; };
 		437040AB1F0650AB004FA467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 437040AA1F0650AB004FA467 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		2394DCC070E0BE281050C8BD /* Pods-thecue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thecue.release.xcconfig"; path = "Pods/Target Support Files/Pods-thecue/Pods-thecue.release.xcconfig"; sourceTree = "<group>"; };
 		2B56F47E4474FD8ACF04F82B /* Pods-thecue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thecue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-thecue/Pods-thecue.debug.xcconfig"; sourceTree = "<group>"; };
 		431718A71F2B585B00BF612E /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		431718A91F2B7DCC00BF612E /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		437040A01F0650AB004FA467 /* thecue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thecue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		437040A31F0650AB004FA467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		437040A81F0650AB004FA467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				437679FB1F06C6A000E36686 /* Theme.swift */,
+				431718A91F2B7DCC00BF612E /* UIImageView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				046CC0B91F067E7B00FC561D /* BeaconID.swift in Sources */,
 				046CC0B51F067E7B00FC561D /* BeaconContentFactory.swift in Sources */,
 				046CC0BA1F067E7B00FC561D /* CachingContentFactory.swift in Sources */,
+				431718AA1F2B7DCC00BF612E /* UIImageView.swift in Sources */,
 				431718A81F2B585B00BF612E /* Player.swift in Sources */,
 				C5DCB4771F2B7A4D00B4B628 /* UsersListViewController.swift in Sources */,
 				046CC0BE1F0682CF00FC561D /* BeaconManager.swift in Sources */,

@@ -135,9 +135,11 @@ class LobbyViewModel {
     }
 
     private func joinQueue() {
+        let currentUser = Auth.auth().currentUser!
         let playerOne = [
             "userId": currentUserId,
-            "name": Auth.auth().currentUser!.displayName ?? "Unknown",
+            "name": currentUser.displayName ?? "Unknown",
+            "imageUrl": currentUser.photoURL?.absoluteString
         ]
         let item = ["player1": playerOne,
             "createdAt": ServerValue.timestamp()] as [String: Any]

@@ -92,7 +92,7 @@ extension LobbyViewController: UITableViewDataSource {
             if !viewModel.isTableFree {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "lobbyItemTableViewCellIdentifier", for: indexPath) as! LobbyItemTableViewCell
                 let item = viewModel.items[indexPath.row]
-                cell.nameLabel.text = item.player1.name
+                cell.player1 = item.player1
                 return cell
             }
             let cell = UITableViewCell()
@@ -101,7 +101,7 @@ extension LobbyViewController: UITableViewDataSource {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "lobbyItemTableViewCellIdentifier", for: indexPath) as! LobbyItemTableViewCell
         let item = viewModel.waitingGames[indexPath.row]
-        cell.nameLabel.text = item.player1.name
+        cell.player1 = item.player1
         return cell
     }
 }
