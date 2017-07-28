@@ -13,13 +13,22 @@ protocol GameManagerDelegateProtocol {
 
 class GameManager: BeaconManagerDelegate {
 
+    static var shared = GameManager()
     var isGameOn: Bool = false
-    var currentTimer: Timer?
+    var currentTimer: Timer? {
+        willSet {
+            currentTimer?.invalidate()
+        }
+    }
     var delegate: GameManagerDelegateProtocol?
 
     func startGameSession() {
         BeaconManager.shared.delegate = self
         checkForBeacon(forTime: 120)
+        if BeaconManager.shared.isBeaconInRange {
+            manualGameStart()
+            delegate?.gameHasStarted()
+        }
     }
 
     func manualGameStart() {
@@ -45,6 +54,7 @@ class GameManager: BeaconManagerDelegate {
     }
 
     func beaconProximityChanged(inRange: Bool) {
+        print(inRange)
         if inRange {
             currentTimer?.invalidate()
             if !isGameOn {

@@ -28,32 +28,34 @@ class LobbyViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 0
         changedSegment(sender: segmentedControl)
 
-        viewModel.onItemsChanged = {[unowned self] in
+        viewModel.onItemsChanged = { [unowned self] in
             self.tableView.isHidden = self.viewModel.items.count == 0
             self.tableView.reloadData()
             self.viewModel.onLoadingChanged?()
         }
 
-        viewModel.onLoadingChanged = {[unowned self] in
+        viewModel.onLoadingChanged = { [unowned self] in
             self.button.layer.borderWidth = 0.0
             self.button.layer.cornerRadius = 0
             self.button.setTitleColor(UIColor.white, for: .normal)
-            
-            if self.viewModel.isInTheQueue {
+
+            switch self.viewModel.playerStatus {
+            case .inQueue:
                 self.button.backgroundColor = UIColor.leaveQueueColor
                 self.button.setTitle("Leave queue", for: .normal)
-            }
-            else if self.viewModel.isPlaying {
+            case .playingGame:
                 self.button.layer.borderColor = UIColor.joinQueueColor.cgColor
                 self.button.backgroundColor = UIColor.backgroundColor
                 self.button.setTitle("Done playing", for: .normal)
                 self.button.setTitleColor(UIColor.joinQueueColor, for: .normal)
                 self.button.layer.borderWidth = 1
                 self.button.layer.cornerRadius = 4
-            }
-            else {
+            case .idle:
                 self.button.backgroundColor = UIColor.joinQueueColor
                 self.button.setTitle("Join queue", for: .normal)
+            case .startingGame:
+                self.button.backgroundColor = UIColor.joinQueueColor
+                self.button.setTitle("Start game!", for: .normal)
             }
             self.button.isEnabled = !self.viewModel.isLoading
         }

@@ -9,11 +9,19 @@
 import Foundation
 import Firebase
 
+enum PlayerStatus {
+    case inQueue
+    case startingGame
+    case playingGame
+    case idle
+}
+
 class LobbyViewModel {
 
     private var refCurrentQueue: DatabaseReference?
 
     let tables: [Table]
+    var playerStatus: PlayerStatus = .idle
 
     private(set) var items: [LobbyItem] = []
     private(set) var isLoading = false
@@ -22,16 +30,10 @@ class LobbyViewModel {
     var onLoadingChanged: (() -> Void)?
     private let currentUserId = Auth.auth().currentUser!.providerData[0].uid
 
-    var isInTheQueue: Bool {
-        return waitingGames.first {
-            $0.player1.userId == currentUserId ||
-            $0.player2?.userId == currentUserId }
-        != nil
-    }
 
-    var isPlaying: Bool {
-        return items.first?.player1.userId == currentUserId || items.first?.player2?.userId == currentUserId
-    }
+//    var isPlaying: Bool {
+//        return items.first?.player1.userId == currentUserId || items.first?.player2?.userId == currentUserId
+//    }
 
     var isTableFree: Bool {
         return items.count == 0
@@ -47,6 +49,7 @@ class LobbyViewModel {
             return nil
         }
         self.tables = tables
+        GameManager.shared.delegate = self
     }
 
     func didSelectTable(atIndex index: Int) {
@@ -60,7 +63,7 @@ class LobbyViewModel {
         refCurrentQueue = Database.database().reference(withPath: "queues/\(key)");
         refCurrentQueue?.observe(DataEventType.value, with: { (snapshot) in
             defer {
-                self.onItemsChanged?()
+                self.gamesDidChange()
             }
             guard let queue = snapshot.value as? [String: AnyObject] else {
                 self.items = []
@@ -81,11 +84,48 @@ class LobbyViewModel {
         })
     }
 
-    func didTapButton() {
-        isInTheQueue || isPlaying ? leaveQueue() : joinQueue()
+    private func gamesDidChange() {
+        defer {
+            self.onItemsChanged?()
+        }
+
+        if items.first?.player1.userId == currentUserId || items.first?.player2?.userId == currentUserId {
+            playerStatus = .startingGame
+            GameManager.shared.startGameSession()
+            return
+        }
+
+        var isInTheQueue: Bool {
+            return waitingGames.first {
+                $0.player1.userId == currentUserId ||
+                $0.player2?.userId == currentUserId }
+            != nil
+        }
+
+        if isInTheQueue {
+            playerStatus = .inQueue
+            return
+        }
+
+        playerStatus = .idle
     }
 
-    private func leaveQueue() {
+    func didTapButton() {
+        switch playerStatus {
+        case .idle:
+            joinQueue()
+        case .inQueue:
+            leaveQueue()
+        case .startingGame:
+            playerStatus = .playingGame
+            self.onLoadingChanged?()
+        case .playingGame:
+            leaveQueue()
+            GameManager.shared.manualGameEnd()
+        }
+    }
+
+    fileprivate func leaveQueue() {
         isLoading = true
         onLoadingChanged?()
         refCurrentQueue?.child(currentUserId).removeValue { (error, ref) in
@@ -104,6 +144,21 @@ class LobbyViewModel {
         refCurrentQueue?.child(currentUserId).setValue(item) { (error, ref) in
             self.isLoading = false
             self.onLoadingChanged?()
+        }
+    }
+}
+
+ extension LobbyViewModel: GameManagerDelegateProtocol {
+    func gameHasStarted() {
+        if playerStatus == .startingGame {
+            playerStatus = .playingGame
+            self.onItemsChanged?()
+        }
+    }
+
+    func gameHasFinished() {
+        if playerStatus == .playingGame {
+            leaveQueue()
         }
     }
 }
