@@ -12,9 +12,20 @@ class LobbyItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var player1: Player! {
+        didSet {
+            self.nameLabel.text = player1.name
+            guard let url = player1.imageURL else {
+                return
+            }
+            self.profileImageView.downloadedFrom(link: url, contentMode: .scaleAspectFill)
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
+        self.profileImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

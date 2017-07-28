@@ -12,6 +12,7 @@ import Foundation
 struct Player {
     var name: String
     var userId: String
+    var imageURL: String?
     init?(withDictionnary dictionnary: [String: AnyObject]) {
         guard let name = dictionnary["name"] as? String,
             let userId = dictionnary["userId"] as? String else {
@@ -19,5 +20,6 @@ struct Player {
         }
         self.name = name
         self.userId = userId
+        self.imageURL = dictionnary["imageUrl"] as? String
     }
 }
