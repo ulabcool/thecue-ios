@@ -17,4 +17,8 @@ extension UIColor {
     class var joinQueueColor: UIColor {
         return UIColor(red: 0 / 255, green: 165 / 255, blue: 201 / 255, alpha: 1.0)
     }
+    
+    class var backgroundColor: UIColor {
+        return UIColor(red: 238 / 255, green: 243 / 255, blue: 247 / 255, alpha: 1.0)
+    }
 }

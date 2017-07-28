@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,7 +38,7 @@
         <!--Join the cue-->
         <scene sceneID="cDe-us-JcO">
             <objects>
-                <viewController storyboardIdentifier="lobbyViewControllerIdentifier" id="L4C-PD-s93" customClass="LobbyViewController" customModule="thecue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="lobbyViewControllerIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="L4C-PD-s93" customClass="LobbyViewController" customModule="thecue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H9T-Z2-O40"/>
                         <viewControllerLayoutGuide type="bottom" id="tdI-3J-0gp"/>
@@ -46,12 +47,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dGI-yA-VS3">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rpo-ew-tv5">
+                                <rect key="frame" x="16" y="163" width="343" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The pool table is free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUe-jy-tjM">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                        <color key="textColor" red="0.34509803919999998" green="0.38823529410000002" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There's no queue. Go Play!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNM-tn-uak">
+                                        <rect key="frame" x="0.0" y="33.5" width="343" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.34509803921568627" green="0.38823529411764707" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="88" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dGI-yA-VS3">
                                 <rect key="frame" x="0.0" y="108" width="375" height="476"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" red="0.93333333333333335" green="0.95294117647058818" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="lobbyItemTableViewCellIdentifier" id="pTc-Tf-EBz" customClass="LobbyItemTableViewCell" customModule="thecue" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="88"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pTc-Tf-EBz" id="eDr-82-xTs">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
@@ -60,7 +79,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19J-j5-l39">
                                                     <rect key="frame" x="95" y="33.5" width="265" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.34509803919999998" green="0.38823529410000002" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-Vb-tbB">
@@ -98,6 +117,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="KyT-JA-Tb5"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <state key="normal" title="Join the queue">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -126,7 +146,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tdI-3J-0gp" firstAttribute="top" secondItem="wmy-ZM-luM" secondAttribute="bottom" id="6Dd-dn-4EI"/>
+                            <constraint firstItem="Rpo-ew-tv5" firstAttribute="top" secondItem="dGI-yA-VS3" secondAttribute="top" constant="55" id="Hwt-aY-fJ6"/>
                             <constraint firstItem="wmy-ZM-luM" firstAttribute="leading" secondItem="qh7-4L-zC5" secondAttribute="leading" id="JX9-pO-MCu"/>
+                            <constraint firstItem="Rpo-ew-tv5" firstAttribute="leading" secondItem="qh7-4L-zC5" secondAttribute="leadingMargin" id="NQV-Ep-RTO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rpo-ew-tv5" secondAttribute="trailing" id="NwZ-MO-rxm"/>
                             <constraint firstAttribute="trailing" secondItem="dGI-yA-VS3" secondAttribute="trailing" id="WiG-sJ-FPJ"/>
                             <constraint firstItem="dGI-yA-VS3" firstAttribute="top" secondItem="8sx-My-2mv" secondAttribute="bottom" constant="8" id="YhV-9c-w1P"/>
                             <constraint firstItem="dGI-yA-VS3" firstAttribute="leading" secondItem="qh7-4L-zC5" secondAttribute="leading" id="cbG-Y0-avP"/>

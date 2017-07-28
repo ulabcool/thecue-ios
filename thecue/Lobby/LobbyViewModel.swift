@@ -22,7 +22,20 @@ class LobbyViewModel {
     var onLoadingChanged: (() -> Void)?
 
     var isInTheQueue: Bool {
-        return items.first { $0.userId == Auth.auth().currentUser!.providerData[0].uid } != nil
+        return waitingGames.first { $0.userId == Auth.auth().currentUser!.providerData[0].uid } != nil
+    }
+    
+    var isPlaying: Bool {
+        return items.first?.userId == Auth.auth().currentUser!.providerData[0].uid
+    }
+
+    var isTableFree: Bool {
+        return items.count == 0
+    }
+
+    var waitingGames: [LobbyItem] {
+        let queuing = items.count > 0 ? items.count - 1: 0
+        return Array(items.suffix(queuing))
     }
 
     init?(tables: [Table]) {
@@ -65,7 +78,7 @@ class LobbyViewModel {
     }
 
     func didTapButton() {
-        isInTheQueue ? leaveQueue() : joinQueue()
+        isInTheQueue || isPlaying ? leaveQueue() : joinQueue()
     }
 
     private func leaveQueue() {
@@ -81,7 +94,7 @@ class LobbyViewModel {
         let item = ["userId": Auth.auth().currentUser!.providerData[0].uid,
             "name": Auth.auth().currentUser!.displayName ?? "Unknown",
             "createdAt": ServerValue.timestamp()] as [String: Any]
-        refCurrentQueue?.child(Auth.auth().currentUser!.providerData[0].uid).setValue(item){ (error, ref) in
+        refCurrentQueue?.child(Auth.auth().currentUser!.providerData[0].uid).setValue(item) { (error, ref) in
             self.isLoading = false
             self.onLoadingChanged?()
         }
