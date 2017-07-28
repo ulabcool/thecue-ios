@@ -8,10 +8,11 @@
 
 class BeaconManager: ProximityContentManagerDelegate {
 
-    let delegate: BeaconManagerDelegate? = nil
+    static let shared = BeaconManager()
+    var delegate: BeaconManagerDelegate? = nil
     let proximityContentManager: ProximityContentManager
-
-
+    var isBeaconInRange: Bool = false
+    
     init() {
         proximityContentManager = ProximityContentManager(
             beaconIDs: [
@@ -27,9 +28,11 @@ class BeaconManager: ProximityContentManagerDelegate {
 
         if let _ = content as? BeaconDetails {
             print("in range")
+            isBeaconInRange = true
             delegate?.beaconProximityChanged(inRange: true)
         } else {
             print("out of range")
+            isBeaconInRange = false
             delegate?.beaconProximityChanged(inRange: false)
         }
     }

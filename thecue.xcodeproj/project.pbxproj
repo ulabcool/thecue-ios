@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043C85F71F2B2FA0006EAD25 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 043C85F61F2B2FA0006EAD25 /* GoogleService-Info.plist */; };
+		043C85FC1F2B31BE006EAD25 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C85FB1F2B31BE006EAD25 /* GameManager.swift */; };
 		046CC0B51F067E7B00FC561D /* BeaconContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC0AD1F067E7B00FC561D /* BeaconContentFactory.swift */; };
 		046CC0B61F067E7B00FC561D /* BeaconDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC0AE1F067E7B00FC561D /* BeaconDetails.swift */; };
 		046CC0B71F067E7B00FC561D /* BeaconDetailsCloudFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046CC0AF1F067E7B00FC561D /* BeaconDetailsCloudFactory.swift */; };
@@ -20,7 +22,6 @@
 		437040A91F0650AB004FA467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437040A71F0650AB004FA467 /* Main.storyboard */; };
 		437040AB1F0650AB004FA467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 437040AA1F0650AB004FA467 /* Assets.xcassets */; };
 		437040AE1F0650AB004FA467 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437040AC1F0650AB004FA467 /* LaunchScreen.storyboard */; };
-		437040B61F06578B004FA467 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437040B51F06578B004FA467 /* GoogleService-Info.plist */; };
 		437040BB1F065D2C004FA467 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040BA1F065D2C004FA467 /* SigninViewController.swift */; };
 		437040BE1F065D61004FA467 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040BD1F065D61004FA467 /* LobbyViewController.swift */; };
 		437040C01F0668E3004FA467 /* LobbyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437040BF1F0668E3004FA467 /* LobbyItem.swift */; };
@@ -32,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		043C85F61F2B2FA0006EAD25 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		043C85FB1F2B31BE006EAD25 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		046CC0AD1F067E7B00FC561D /* BeaconContentFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconContentFactory.swift; sourceTree = "<group>"; };
 		046CC0AE1F067E7B00FC561D /* BeaconDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconDetails.swift; sourceTree = "<group>"; };
 		046CC0AF1F067E7B00FC561D /* BeaconDetailsCloudFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconDetailsCloudFactory.swift; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		437040AA1F0650AB004FA467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		437040AD1F0650AB004FA467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		437040AF1F0650AB004FA467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		437040B51F06578B004FA467 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		437040BA1F065D2C004FA467 /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		437040BD1F065D61004FA467 /* LobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		437040BF1F0668E3004FA467 /* LobbyItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LobbyItem.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043C85F81F2B3134006EAD25 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				043C85FB1F2B31BE006EAD25 /* GameManager.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		046CC0AC1F067E6600FC561D /* Beacon */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +125,8 @@
 				437040AA1F0650AB004FA467 /* Assets.xcassets */,
 				437040AC1F0650AB004FA467 /* LaunchScreen.storyboard */,
 				437040AF1F0650AB004FA467 /* Info.plist */,
-				437040B51F06578B004FA467 /* GoogleService-Info.plist */,
+				043C85F61F2B2FA0006EAD25 /* GoogleService-Info.plist */,
+				043C85F81F2B3134006EAD25 /* Game */,
 				046CC0AC1F067E6600FC561D /* Beacon */,
 				437679FA1F06C68600E36686 /* Common */,
 				437040BC1F065D49004FA467 /* Lobby */,
@@ -200,7 +211,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Usabilla;
 				TargetAttributes = {
 					4370409F1F0650AB004FA467 = {
@@ -235,7 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				437040AE1F0650AB004FA467 /* LaunchScreen.storyboard in Resources */,
-				437040B61F06578B004FA467 /* GoogleService-Info.plist in Resources */,
+				043C85F71F2B2FA0006EAD25 /* GoogleService-Info.plist in Resources */,
 				437040AB1F0650AB004FA467 /* Assets.xcassets in Resources */,
 				437040A91F0650AB004FA467 /* Main.storyboard in Resources */,
 			);
@@ -301,6 +312,7 @@
 				437040C21F066C9D004FA467 /* Table.swift in Sources */,
 				437679F91F06C55700E36686 /* LobbyViewModel.swift in Sources */,
 				437040C01F0668E3004FA467 /* LobbyItem.swift in Sources */,
+				043C85FC1F2B31BE006EAD25 /* GameManager.swift in Sources */,
 				437040BB1F065D2C004FA467 /* SigninViewController.swift in Sources */,
 				437679FC1F06C6A000E36686 /* Theme.swift in Sources */,
 				046CC0B61F067E7B00FC561D /* BeaconDetails.swift in Sources */,
@@ -348,7 +360,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -356,7 +370,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -399,7 +417,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -407,7 +427,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
