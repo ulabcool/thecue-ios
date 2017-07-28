@@ -54,8 +54,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print("Error login in Firebase\(error)")
                 return
             }
+            
+            self.addUserToFireBase()
             self.loadTablesAndLobby()
         }
+    }
+    
+    private func addUserToFireBase() {
+        let refUsers = Database.database().reference(withPath: "users");
+
+        let fireBaseUser = Auth.auth().currentUser!
+        let user = [
+            "userId": fireBaseUser.uid,
+            "name": fireBaseUser.displayName ?? "Unknown",
+            "imageUrl": fireBaseUser.photoURL?.absoluteString
+            ]
+        refUsers.child(fireBaseUser.uid).setValue(user)
     }
 
     func userImage() -> UIImage {
