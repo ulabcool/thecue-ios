@@ -14,6 +14,7 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
+    var currentUser: GIDGoogleUser?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -38,6 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return
         }
 
+        ////
+        let userId = user.userID
+        let idToken = user.authentication.idToken // Safe to send to the server
+        let fullName = user.profile.name
+        let givenName = user.profile.givenName
+        let familyName = user.profile.familyName
+        let email = user.profile.email
+        var imageUrl: URL? = nil
+        if user.profile.hasImage {
+            imageUrl = user.profile.imageURL(withDimension: 100)
+        }
+        ////
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
@@ -49,8 +62,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             self.loadTablesAndLobby()
         }
     }
+    
+//    func userImage() -> UIImage {
+//        let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
+//        let data = try! NSData(contentsOf: filename, options: [])
+//        return UIImage(data: data!)
+//    }
 
-
+    func saveUserImage(image: UIImage) {
+            if let data = UIImagePNGRepresentation(image) {
+                let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
+                try? data.write(to: filename)
+            }
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // DISCONNECT
