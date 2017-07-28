@@ -9,13 +9,53 @@
 import UIKit
 import GoogleSignIn
 
-class SigninViewController: UIViewController, GIDSignInUIDelegate{
+class SigninViewController: UIViewController, GIDSignInUIDelegate {
+    
+    @IBOutlet var signInBtn: GIDSignInButton?
+
+    var currentUser: GIDGoogleUser?
+
+    var imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.backgroundColor = UIColor.lightGray
+        iv.layer.cornerRadius = 50
+        iv.layer.borderWidth = 2
+        return iv
+    }()
+    
+    var activitIndicator: UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView()
+        ai.activityIndicatorViewStyle = .gray
+        return ai
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
+
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            
+            signInBtn?.isHidden = true
+            
+            view.addSubview(imageView)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            
+            imageView.addSubview(activitIndicator)
+            activitIndicator.translatesAutoresizingMaskIntoConstraints = false
+            activitIndicator.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+            activitIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+            
+            activitIndicator.startAnimating()
+        }
+        
+        currentUser = GIDSignIn.sharedInstance().currentUser
+        if currentUser == nil {
+            GIDSignIn.sharedInstance().signInSilently()
+        }
     }
 }
 
