@@ -17,15 +17,17 @@ class SigninViewController: UIViewController, GIDSignInUIDelegate {
 
     var imageView: UIImageView = {
         let iv = UIImageView()
+        iv.clipsToBounds = true
         iv.backgroundColor = UIColor.lightGray
         iv.layer.cornerRadius = 50
-        iv.layer.borderWidth = 2
+        iv.layer.borderWidth = 4
+        iv.layer.borderColor = UIColor.lightGray.cgColor
         return iv
     }()
     
     var activitIndicator: UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView()
-        ai.activityIndicatorViewStyle = .gray
+        ai.activityIndicatorViewStyle = .white
         return ai
     }()
 
@@ -38,6 +40,8 @@ class SigninViewController: UIViewController, GIDSignInUIDelegate {
             signInBtn?.isHidden = true
             
             view.addSubview(imageView)
+            let image = userImage()
+            imageView.image = image
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
             imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -56,6 +60,14 @@ class SigninViewController: UIViewController, GIDSignInUIDelegate {
         if currentUser == nil {
             GIDSignIn.sharedInstance().signInSilently()
         }
+    }
+    
+    func userImage() -> UIImage {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        let filename = documentsDirectory.appendingPathComponent("userImage.png")
+        let data = try! NSData(contentsOf: filename, options: [])
+        return UIImage(data: data as Data)!
     }
 }
 

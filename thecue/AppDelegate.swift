@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
 
-         ESTConfig.setupAppID("giacomo-usabilla-com-s-pro-n2o", andAppToken: "02bffe8d3c2870ada4211ac2d9c4bb9d")
+        ESTConfig.setupAppID("giacomo-usabilla-com-s-pro-n2o", andAppToken: "02bffe8d3c2870ada4211ac2d9c4bb9d")
 
         return true
     }
@@ -39,18 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return
         }
 
-        ////
-        let userId = user.userID
-        let idToken = user.authentication.idToken // Safe to send to the server
-        let fullName = user.profile.name
-        let givenName = user.profile.givenName
-        let familyName = user.profile.familyName
-        let email = user.profile.email
         var imageUrl: URL? = nil
         if user.profile.hasImage {
             imageUrl = user.profile.imageURL(withDimension: 100)
+            let data = NSData(contentsOf: imageUrl!)
+            let image = UIImage(data: (data as! NSData) as Data)
+            saveUserImage(image: image!)
         }
-        ////
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
@@ -62,20 +57,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             self.loadTablesAndLobby()
         }
     }
-    
-//    func userImage() -> UIImage {
-//        let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
-//        let data = try! NSData(contentsOf: filename, options: [])
-//        return UIImage(data: data!)
-//    }
+
+    func userImage() -> UIImage {
+        let filename = getDocumentsDirectory().appendingPathComponent("userImage.png")
+        let data = try! NSData(contentsOf: filename, options: [])
+        return UIImage(data: data as Data)!
+    }
 
     func saveUserImage(image: UIImage) {
-            if let data = UIImagePNGRepresentation(image) {
-                let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
-                try? data.write(to: filename)
-            }
+        if let data = UIImagePNGRepresentation(image) {
+            let filename = getDocumentsDirectory().appendingPathComponent("userImage.png")
+            try? data.write(to: filename)
+        }
     }
-    
+
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
@@ -90,9 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let refTables = Database.database().reference().child("tables");
 
         refTables.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-            guard let tables = snapshot.value as? [[String: AnyObject]] else {return}
+            guard let tables = snapshot.value as? [[String: AnyObject]] else { return }
             print(tables)
-            let resTables = tables.flatMap{Table(withDictionnary: $0)}
+            let resTables = tables.flatMap { Table(withDictionnary: $0) }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "navigationControllerIdentifier") as! UINavigationController
             let lobbyViewController = navigationController.topViewController as! LobbyViewController
