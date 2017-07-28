@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LobbyViewController: UIViewController {
+class LobbyViewController: UIViewController, UsersListViewControllerDelegate {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var button: UIButton!
@@ -59,6 +59,12 @@ class LobbyViewController: UIViewController {
             }
             self.button.isEnabled = !self.viewModel.isLoading
         }
+        
+        performSegue(withIdentifier: "showListViewController", sender: self)
+    }
+    
+    func didSelectUser(name: String) {
+        print("user is : \(name)")
     }
 
     func changedSegment(sender: UISegmentedControl) {
@@ -69,6 +75,13 @@ class LobbyViewController: UIViewController {
     @IBAction func buttonAction(_ sender: Any) {
         viewModel.didTapButton()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destController = segue.destination as? UsersListViewController {
+            destController.delegate = self
+        }
+    }
+    
 }
 extension LobbyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
