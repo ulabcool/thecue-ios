@@ -9,18 +9,21 @@
 import Foundation
 
 struct LobbyItem {
-    var name: String
-    var userId: String
     var createdAt: Date
+    var player1: Player
+    var player2: Player?
     init?(withDictionnary dictionnary: [String: AnyObject]) {
-        guard let name = dictionnary["name"] as? String,
-            let userId = dictionnary["userId"] as? String,
+        guard let player1Data = dictionnary["player1"] as? [String: AnyObject],
+            let player1 = Player(withDictionnary: player1Data),
             let createdAt = dictionnary["createdAt"] as? TimeInterval else {
                 return nil
         }
-        
-        self.createdAt = Date(timeIntervalSince1970: createdAt/1000)
-        self.name = name
-        self.userId = userId
+
+        self.createdAt = Date(timeIntervalSince1970: createdAt / 1000)
+        self.player1 = player1
+
+        if let player2Data = dictionnary["player2"] as? [String: AnyObject] {
+            self.player2 = Player(withDictionnary: player2Data)
+        }
     }
 }

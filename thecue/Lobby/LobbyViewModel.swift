@@ -20,13 +20,17 @@ class LobbyViewModel {
 
     var onItemsChanged: (() -> Void)?
     var onLoadingChanged: (() -> Void)?
+    private let currentUserId = Auth.auth().currentUser!.providerData[0].uid
 
     var isInTheQueue: Bool {
-        return waitingGames.first { $0.userId == Auth.auth().currentUser!.providerData[0].uid } != nil
+        return waitingGames.first {
+            $0.player1.userId == currentUserId ||
+            $0.player2?.userId == currentUserId }
+        != nil
     }
-    
+
     var isPlaying: Bool {
-        return items.first?.userId == Auth.auth().currentUser!.providerData[0].uid
+        return items.first?.player1.userId == currentUserId || items.first?.player2?.userId == currentUserId
     }
 
     var isTableFree: Bool {
@@ -84,22 +88,22 @@ class LobbyViewModel {
     private func leaveQueue() {
         isLoading = true
         onLoadingChanged?()
-        refCurrentQueue?.child(Auth.auth().currentUser!.providerData[0].uid).removeValue { (error, ref) in
+        refCurrentQueue?.child(currentUserId).removeValue { (error, ref) in
             self.isLoading = false
             self.onLoadingChanged?()
         }
     }
 
     private func joinQueue() {
-        let item = ["userId": Auth.auth().currentUser!.providerData[0].uid,
+        let playerOne = [
+            "userId": currentUserId,
             "name": Auth.auth().currentUser!.displayName ?? "Unknown",
+        ]
+        let item = ["player1": playerOne,
             "createdAt": ServerValue.timestamp()] as [String: Any]
-        refCurrentQueue?.child(Auth.auth().currentUser!.providerData[0].uid).setValue(item) { (error, ref) in
+        refCurrentQueue?.child(currentUserId).setValue(item) { (error, ref) in
             self.isLoading = false
             self.onLoadingChanged?()
         }
     }
-
-
-
 }
